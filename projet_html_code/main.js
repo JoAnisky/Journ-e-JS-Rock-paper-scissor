@@ -1,4 +1,3 @@
-console.log('hello');
 // Récupération des éléments
 
 // RULES component
@@ -19,27 +18,47 @@ rulesClose.addEventListener('click', function(){
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 const rock = document.querySelector('.rock');
+
 // All components
-const hands = document.querySelectorAll('.option-container')
+const hands = document.querySelectorAll('.option-container');
 
 // GAME DIV
 const gameStep1 = document.querySelector('.step-1');
 const gameStep2 = document.querySelector('.step-2');
 
-// Play again btn
-const btnAgain = document.querySelector('.play-again-btn')
+const playerPick = document.querySelector('.player-pick');
+const computerPick = document.querySelector('.computer-pick');
 
-hands.forEach(item => {
-    
+// Play again btn
+const btnAgain = document.querySelector('.play-again-btn');
+
+const myArray = [paper, scissors, rock];
+
+function computerPlay(){
+    var rand = Math.floor(Math.random()*myArray.length);
+    var rValue = myArray[rand];
+    const computerLast = computerPick.lastElementChild;
+    console.log(rValue);
+}
+
+
+
+myArray.forEach(item => {
     item.addEventListener('click', function(){
+
         gameStep2.classList.add('step-2-minimizer');
         gameStep1.style.display ='none';
+        playerLast = playerPick.lastElementChild;
+        playerLast.classList.remove('replace');
         console.log(item);
-
+        computerPlay();
     })
-
+    
     btnAgain.addEventListener('click', function(){
         gameStep2.classList.remove('step-2-minimizer');
         gameStep1.style.display ='block';
+        playerLast.classList.add('replace');
+
     });
+
 });
