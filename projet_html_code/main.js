@@ -4,10 +4,8 @@
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const section = document.querySelector('section.extra');
-// RULES Btn
-=======
-// RULES component
 
+// RULES component
 const btnRules = document.querySelector('.rules-btn');
 const rulesDiv = document.querySelector('aside');
 btnRules.addEventListener('click', function(){
