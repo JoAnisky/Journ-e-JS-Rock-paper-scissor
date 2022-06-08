@@ -4,10 +4,6 @@
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const section = document.querySelector('section.extra');
-<<<<<<< HEAD
-=======
-
->>>>>>> 8bd685e642deb97bf85fb6f5c12906b2a1336624
 // RULES component
 const btnRules = document.querySelector('.rules-btn');
 const rulesDiv = document.querySelector('aside');
@@ -23,19 +19,12 @@ const rulesClose = document.querySelector('.close-rules');
 rulesClose.addEventListener('click', function(){
     rulesDiv.style.opacity = "0";
     rulesDiv.style.zIndex = "-1";
-<<<<<<< HEAD
-=======
-
->>>>>>> 8bd685e642deb97bf85fb6f5c12906b2a1336624
     document.body.style.backgroundColor = "var(--background)";
     header.style.opacity = "1";
     main.style.opacity = "1";
     section.style.opacity = "1";
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 8bd685e642deb97bf85fb6f5c12906b2a1336624
 });
 
 // GAME components
@@ -84,8 +73,4 @@ myArray.forEach(item => {
         playerLast.classList.add('replace');
 
     });
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 8bd685e642deb97bf85fb6f5c12906b2a1336624
