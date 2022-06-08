@@ -1,15 +1,11 @@
 console.log('hello');
 // Récupération des éléments
 
-<<<<<<< HEAD
 // Opacitée fond RULES
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const section = document.querySelector('section.extra');
-// RULES Btn
-=======
 // RULES component
->>>>>>> 2668b67cb8b6244a9e20291381e38e27a09a0ca2
 const btnRules = document.querySelector('.rules-btn');
 const rulesDiv = document.querySelector('aside');
 btnRules.addEventListener('click', function(){
@@ -24,13 +20,10 @@ const rulesClose = document.querySelector('.close-rules');
 rulesClose.addEventListener('click', function(){
     rulesDiv.style.opacity = "0";
     rulesDiv.style.zIndex = "-1";
-<<<<<<< HEAD
     document.body.style.backgroundColor = "var(--background)";
     header.style.opacity = "1";
     main.style.opacity = "1";
     section.style.opacity = "1";
-=======
-
 });
 
 // GAME components
@@ -60,5 +53,4 @@ hands.forEach(item => {
         gameStep2.classList.remove('step-2-minimizer');
         gameStep1.style.display ='block';
     });
->>>>>>> 2668b67cb8b6244a9e20291381e38e27a09a0ca2
 });
