@@ -60,9 +60,14 @@ function computerPlay(){
     const imgAdress = `icon-${rValue.classList[1]}.svg`
     computerLast.innerHTML = `<div class="option"><img src="${imgAdress}" alt="option"></div>`
 }
-
+// function compare(){
+//     if(myArray[1]){
+//         console.log('perdu');
+//     }
+// }
 myArray.forEach(item => {
     item.addEventListener('click', function(){
+
         gameStep2.classList.add('step-2-minimizer');
         gameStep1.style.display ='none';
         const playerLast = playerPick.lastElementChild;
@@ -70,13 +75,9 @@ myArray.forEach(item => {
         playerLast.classList.add(item.classList[1]);
 
         const imgAdress = `icon-${item.classList[1]}.svg`
-        playerLast.innerHTML = `<div class="option"><img src="${imgAdress}" alt="option"></div>`
-
-        console.log(playerLast);
-
+        playerLast.innerHTML = `<div class="option"><img src="${imgAdress}" alt="option"></div>`;
         computerPlay();
  
-    
         btnAgain.addEventListener('click', function(){
             gameStep2.classList.remove('step-2-minimizer');
             gameStep1.style.display ='block';
@@ -85,5 +86,5 @@ myArray.forEach(item => {
             computerLast.classList.remove(item.classList[1]);
         });
 
-    })
+    });
 });
