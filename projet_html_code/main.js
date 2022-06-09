@@ -57,7 +57,13 @@ const score = document.getElementById('score');
 annouceDiv.style.transform = "scale(0)";
 annouceDiv.style.transition = "transform 350ms linear";
 computerLast.style.transform = 'scale(0)';
+
 let i = 0;
+if (localStorage.getItem('score') != null){
+    i = localStorage.getItem('score');
+    score.innerText = i;
+}
+
 myArray.forEach(item => {
     item.addEventListener('click', function(){
 
@@ -89,6 +95,8 @@ myArray.forEach(item => {
             announce.innerText = "EQUALITY";
         }
 
+        localStorage.setItem('score', i);
+
         gameStep2.classList.add('step-2-minimizer');
         gameStep1.style.display ='none';
 
@@ -116,4 +124,3 @@ myArray.forEach(item => {
 
     });
 });
-
