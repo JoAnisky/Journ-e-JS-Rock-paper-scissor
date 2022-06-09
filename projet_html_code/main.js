@@ -4,11 +4,7 @@
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const section = document.querySelector('section.extra');
-<<<<<<< HEAD
-// RULES component
-=======
 // RULES Btn
->>>>>>> main
 const btnRules = document.querySelector('.rules-btn');
 
 // RULES component
@@ -53,41 +49,49 @@ const btnAgain = document.querySelector('.play-again-btn');
 
 const myArray = [paper, scissors, rock];
 
-function computerPlay(){
-    var rand = Math.floor(Math.random()*myArray.length);
-    var rValue = myArray[rand];
-    const computerLast = computerPick.lastElementChild;
-    computerLast.classList.remove('replace');
-    computerLast.classList.add(rValue.classList[1]);
+const score = document.getElementById('score');
 
-    const imgAdress = `icon-${rValue.classList[1]}.svg`
-    computerLast.innerHTML = `<div class="option"><img src="${imgAdress}" alt="option"></div>`
-}
-// function compare(){
-//     if(myArray[1]){
-//         console.log('perdu');
-//     }
-// }
+let i = 0;
 myArray.forEach(item => {
     item.addEventListener('click', function(){
 
         gameStep2.classList.add('step-2-minimizer');
         gameStep1.style.display ='none';
         const playerLast = playerPick.lastElementChild;
-        playerLast.classList.remove('replace');
+        playerLast.classList.remove(playerLast.classList[1]);
         playerLast.classList.add(item.classList[1]);
 
-        const imgAdress = `icon-${item.classList[1]}.svg`
-        playerLast.innerHTML = `<div class="option"><img src="${imgAdress}" alt="option"></div>`;
-        computerPlay();
- 
+        const imgAdressUser = `icon-${item.classList[1]}.svg`;
+        playerLast.innerHTML = `<div class="option"><img src="${imgAdressUser}" alt="option"></div>`;
+        
+        var rand = Math.floor(Math.random()*myArray.length);
+        var rValue = myArray[rand];
+        const computerLast = computerPick.lastElementChild;
+        computerLast.classList.remove(computerLast.classList[1]);
+        computerLast.classList.add(rValue.classList[1]);
+        
+        const imgAdressComputer = `icon-${rValue.classList[1]}.svg`;
+        computerLast.innerHTML = `<div class="option"><img src="${imgAdressComputer}" alt="option"></div>`;
+
+        const announce = document.querySelector('.annouce-winner-text');
+
+        if ((item == paper && rValue == scissors) || (item == scissors && rValue == rock) || (item == rock && rValue == paper)) {
+            announce.innerText = "YOU LOSE";
+            i--;
+            score.innerText = i;
+        } else if ((item == paper && rValue == rock) || (item == scissors && rValue == paper) || (item == rock && rValue == scissors)) {
+            announce.innerText = "YOU WIN";
+            i++;
+            score.innerText = i;
+        } else {
+            announce.innerText = "EQUALITY";
+        }
+
         btnAgain.addEventListener('click', function(){
             gameStep2.classList.remove('step-2-minimizer');
             gameStep1.style.display ='block';
-            playerLast.classList.remove(item.classList[1]);
-            const computerLast = computerPick.lastElementChild;
-            computerLast.classList.remove(item.classList[1]);
         });
 
     });
 });
+
