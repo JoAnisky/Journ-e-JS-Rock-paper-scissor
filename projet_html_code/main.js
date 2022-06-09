@@ -43,6 +43,9 @@ const gameStep2 = document.querySelector('.step-2');
 
 const playerPick = document.querySelector('.player-pick');
 const computerPick = document.querySelector('.computer-pick');
+const computerLast = computerPick.lastElementChild;
+
+const annouceDiv = document.querySelector('.annouce-winner');
 
 // Play again btn
 const btnAgain = document.querySelector('.play-again-btn');
@@ -51,12 +54,13 @@ const myArray = [paper, scissors, rock];
 
 const score = document.getElementById('score');
 
+annouceDiv.style.transform = "scale(0)";
+annouceDiv.style.transition = "transform 350ms linear";
+computerLast.style.transform = 'scale(0)';
 let i = 0;
 myArray.forEach(item => {
     item.addEventListener('click', function(){
 
-        gameStep2.classList.add('step-2-minimizer');
-        gameStep1.style.display ='none';
         const playerLast = playerPick.lastElementChild;
         playerLast.classList.remove(playerLast.classList[1]);
         playerLast.classList.add(item.classList[1]);
@@ -66,7 +70,7 @@ myArray.forEach(item => {
         
         var rand = Math.floor(Math.random()*myArray.length);
         var rValue = myArray[rand];
-        const computerLast = computerPick.lastElementChild;
+    
         computerLast.classList.remove(computerLast.classList[1]);
         computerLast.classList.add(rValue.classList[1]);
         
@@ -78,18 +82,36 @@ myArray.forEach(item => {
         if ((item == paper && rValue == scissors) || (item == scissors && rValue == rock) || (item == rock && rValue == paper)) {
             announce.innerText = "YOU LOSE";
             i--;
-            score.innerText = i;
         } else if ((item == paper && rValue == rock) || (item == scissors && rValue == paper) || (item == rock && rValue == scissors)) {
             announce.innerText = "YOU WIN";
             i++;
-            score.innerText = i;
         } else {
             announce.innerText = "EQUALITY";
+        }
+
+        gameStep2.classList.add('step-2-minimizer');
+        gameStep1.style.display ='none';
+
+        setTimeout(afficherMainComputer, 1100);
+        function afficherMainComputer() {
+            computerLast.style.transform = 'scale(1.2, 1.2)';
+        }
+        
+        setTimeout(afficherGagnant, 1800);
+        function afficherGagnant() {
+            annouceDiv.style.transform = "scale(1,1)";
+        }
+
+        setTimeout(afficherScore, 2200);
+        function afficherScore() {
+            score.innerText = i;
         }
 
         btnAgain.addEventListener('click', function(){
             gameStep2.classList.remove('step-2-minimizer');
             gameStep1.style.display ='block';
+            annouceDiv.style.transform = "scale(0)";
+            computerLast.style.transform = 'scale(0)';
         });
 
     });
